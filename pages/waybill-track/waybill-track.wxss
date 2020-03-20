@@ -1,0 +1,40 @@
+/* pages/waybill-track/waybill-track.wxss */
+.waybill-track {
+  display: flex;
+  flex: 1;
+  height: 100%;
+  flex-direction: column;
+  background: #fff;
+}
+.waybill-track map{
+  width: 100%;
+  display: flex;
+  flex: 1.5;
+}
+.arrived-time-con{
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-indent: 24rpx;
+  color: #24282E;
+  font-size: 28rpx;
+  font-weight: bold;
+  border: 1px solid #E2E2E2;
+}
+.track-steps {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+.track-steps .van-step .van-step__title view:first-child{
+  color: #24282E;
+  font-size: 28rpx;
+}
+.track-steps .van-step .van-step__title view:last-child{
+  color: #8A9099;
+  font-size: 24rpx;
+}
+.track-steps .van-icon.van-icon-checked{
+  color: #4A7FE8!important;
+}

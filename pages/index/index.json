@@ -1,0 +1,25 @@
+{
+  "navigationBarBackgroundColor": "#fff",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50,
+  "navigationBarTitleText": "云驿通",
+  "disableScroll": false,
+  "backgroundTextStyle": "dark",
+  "usingComponents": {
+    "mp-loading": "../../miniprogram_npm/weui-miniprogram/loading/loading",
+    "mp-searchbar": "../../miniprogram_npm/weui-miniprogram/searchbar/searchbar",
+    "mp-icon": "../../miniprogram_npm/weui-miniprogram/icon/icon",
+    "van-tab": "vant-weapp/tab",
+    "van-tabs": "vant-weapp/tabs",
+    "van-popup": "vant-weapp/popup",
+    "van-button": "vant-weapp/button",
+    "van-search": "vant-weapp/search",
+    "van-dialog": "vant-weapp/dialog",
+    "van-checkbox": "vant-weapp/checkbox",
+    "van-checkbox-group": "vant-weapp/checkbox-group",
+    "van-cell": "vant-weapp/cell",
+    "van-field": "vant-weapp/field",
+    "van-cell-group": "vant-weapp/cell-group",
+    "van-notify": "vant-weapp/notify"
+  }
+}

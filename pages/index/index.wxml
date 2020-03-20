@@ -1,0 +1,181 @@
+<!--index.wxml-->
+<view class="index-container container">
+  <!-- 上拉刷新 -->
+  <!-- <view wx:if="{{ isLoading }}" class="loading">
+    <image src="../../static/img/loadMore.svg"></image>
+    <text>加载中...</text>
+    <mp-loading type="circle"></mp-loading>
+  </view> -->
+  <!-- 轮播图 -->
+  <swiper
+    class="swiper" 
+    indicator-color="rgba(0, 0, 0, .3)"
+    indicator-active-color="#ffffff"
+    indicator-dots="{{false}}"
+    autoplay="{{true}}"
+    interval="{{4000}}"
+    duration="{{500}}">
+    <block wx:for="{{swiperData}}" wx:key="{{index}}">
+      <swiper-item bindtap="swiperToDownload">
+        <image src="{{item}}" class="img" />
+      </swiper-item>
+    </block>
+  </swiper>
+  <!-- 收发Tab -->
+  <view class="tabs">
+    <button class="tab {{tabIndex == 1 ? 'tab-active' : ''}}" disabled="{{ tabDisabled }}" bindtap="handleTab" data-index="1">
+      <image wx:if="{{tabIndex == 2}}" class="tab-icon" src="../../static/img/down.png"></image>
+      <image wx:if="{{tabIndex == 1}}" class="tab-icon" src="../../static/img/down_active.png"></image>
+      <view class="tab-text">我收到的</view>
+    </button> 
+    <button class="tab {{tabIndex == 2 ? 'tab-active' : ''}}" disabled="{{ !tabDisabled }}" bindtap="handleTab" data-index="2">
+      <image wx:if="{{tabIndex == 1}}" class="tab-icon" src="../../static/img/up.png"></image>
+      <image wx:if="{{tabIndex == 2}}" class="tab-icon" src="../../static/img/up_active.png"></image>
+      <view class="tab-text">我发出的</view>
+    </button>
+  </view>
+  <!-- 搜索框 -->
+  <view class="search">
+    <view class="search-box">
+      <van-search 
+        background="#fff"
+        value="{{ searchValue }}"
+        bind:search="searchWabill"
+        bind:change="searchValChange"
+        bind:clear="clearSearch"
+        data-clearval="{{ '' }}"
+        placeholder="搜索运单号/客户名称" />
+    </view>
+    <view class="filter-box">
+      <view bindtap="showFilterPop" class="f-b-text">筛选</view>
+    </view>
+  </view>
+    <!-- <mp-searchbar bindselectresult="selectResult" search="{{search}}"></mp-searchbar>
+    <mp-icon icon="tag" color="red" size="{{30}}"></mp-icon> -->
+  <!-- 我收到的 -->
+  <view class="tab-content" wx:if="{{tabIndex == 1}}">
+    <view wx:if="{{receiveWaybillData.length > 0}}" class="have-waybill">
+      <view class="waybill-item" bindtap="toWaybillDetail" wx:for="{{receiveWaybillData}}" wx:key="index" data-id="{{ item.waybillId }}">
+        <view class="name">
+          <view class="n-left">{{item.sendClientName}}</view>
+          <view class="n-right t-a-right">{{item.waybillStatus}}</view>
+        </view>
+        <view class="create-time">开单日期：{{item.createTime}}</view>
+        <view class="money">
+          <view class="m-text">货款金额：￥{{item.receivableGoods}}</view>
+          <view class="m-text">运费金额：￥{{item.freight}}</view>
+        </view>
+        <view class="station">
+          <view class="s-left">当前服务站点：{{item.stationName}}</view>
+          <view class="s-right">
+            <view class="s-right-text">司机：{{item.driver}}</view>
+            <image wx:if="{{false}}" class="s-right-icon" src="../../static/img/call.png"></image>
+          </view>
+        </view>
+        <view wx:if="{{item.expectedArrivedTime !== ''}}" class="arrive-time">预计到达时间：{{item.expectedArrivedTime}}</view>
+      </view>
+    </view>
+    <view wx:if="{{receiveWaybillData.length == 0}}" class="no-wayBill">暂无数据
+    </view>
+  </view>
+  <!-- 我发出的 -->
+  <view class="tab-content" wx:if="{{tabIndex == 2}}">
+    <view wx:if="{{sendWaybillData.length > 0}}" class="have-waybill">
+      <view class="waybill-item" bindtap="toWaybillDetail" wx:for="{{sendWaybillData}}" wx:key="index" data-id="{{ item.waybillId }}">
+        <view class="name">
+          <view class="n-left">{{item.receivedClientName}}</view>
+          <view class="n-right t-a-right">{{item.waybillStatus}}</view>
+        </view>
+        <view class="create-time">开单日期：{{item.createTime}}</view>
+        <view class="money">
+          <view class="m-text">货款金额：￥{{item.receivableGoods}}</view>
+          <view class="m-text">运费金额：￥{{item.freight}}</view>
+        </view>
+        <view class="station">
+          <view class="s-left">当前服务站点：{{item.stationName}}</view>
+          <view class="s-right">
+            <view class="s-right-text">司机：{{item.driver}}</view>
+            <image wx:if="{{false}}" class="s-right-icon" src="../../static/img/call.png"></image>
+          </view>
+        </view>
+        <view wx:if="{{item.expectedArrivedTime !== ''}}" class="arrive-time">预计到达时间：{{item.expectedArrivedTime}}</view>
+      </view>
+    </view>
+    <view wx:if="{{sendWaybillData.length == 0}}" class="no-wayBill">暂无数据</view>
+  </view>
+  <!-- 筛选条件弹出层 -->
+  <van-popup
+    show="{{ filterPopShow }}"
+    position="right"
+    bind:close="filterPopClose"
+    catchtouchmove="touchmove"
+  >
+    <view class="filter-content">
+      <view class="status-title">运单状态</view>
+      <van-checkbox-group value="{{ waybillStatusList }}" bind:change="onChange">
+        <van-cell-group >
+          <van-cell
+            wx:for="{{ statusList }}"
+            wx:key="index"
+            title="{{ item.label }}"
+            value-class="value-class"
+            clickable
+            data-index="{{ index }}"
+            bind:click="toggle"
+          >
+            <van-checkbox catch:tap="noop" class="checkboxes-{{ index }}" name="{{ item.id }}" />
+          </van-cell>
+        </van-cell-group>
+      </van-checkbox-group>
+      <view class="time-title">开单时间</view>
+      <view class="t-p-wrap">
+        <picker mode="date" value="{{createTimeStart}}" start="2000-01-01" end="{{dateEnd}}" bindchange="startDateChange">
+          <view class="picker">{{createTimeStart}}</view>
+        </picker>
+        <text decode="{{true}}">&nbsp;-&nbsp;</text>
+        <picker mode="date" value="{{createTimeEnd}}" start="2000-01-01" end="{{dateEnd}}" bindchange="endDateChange">
+          <view class="picker">{{createTimeEnd}}</view>
+        </picker>
+      </view>
+      <view class="f-c-btn">
+        <van-button type="default" bind:click="resetFilter">重置</van-button>
+        <van-button type="info" bind:click="sureFilter">确定</van-button>
+      </view>
+    </view>
+  </van-popup>
+  <!-- 授权弹框 -->
+  <!-- <van-dialog
+    title="提示"
+    confirmButtonText="授权"
+    show="{{ authDialogShow }}"
+    message="首次使用该程序需要进行授权获取您的公开信息（昵称、头像）"
+    confirm-button-open-type="getUserInfo"
+    bind:getuserinfo="getUserInfo"
+    catchtouchmove="touchmove"
+  >
+  
+  </van-dialog> -->
+  <!-- 取消授权弹框 -->
+  <!-- <van-dialog
+    title="提示"
+    confirmButtonText="我知道了"
+    show="{{ rejectAuthDialogShow }}"
+    message="取消授权将无法继续使用"
+    confirm-button-open-type="getUserInfo"
+    bind:getuserinfo="getUserInfo"
+    catchtouchmove="touchmove"
+  >
+  </van-dialog> -->
+  <!-- 上拉加载 -->
+  <view wx:if="{{!isLoading}}">
+    <view wx:if="{{hasMore}}"  class="loadmore">
+      <image src="/static/img/loadMore.svg"></image>
+      <text>加载中...</text>
+    </view>
+    <view wx:else class="no-more">
+      <text>已加载全部</text>
+      <text class="line"></text>
+    </view>
+  </view>
+  <van-notify id="custom-selector" />
+</view>

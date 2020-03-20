@@ -1,0 +1,15 @@
+{
+  "navigationBarTitleText": "我的",
+  "navigationBarBackgroundColor": "#4A7FE8",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "van-cell": "vant-weapp/cell",
+    "van-icon": "vant-weapp/icon",
+    "van-popup": "vant-weapp/popup",
+    "van-button": "vant-weapp/button",
+    "van-dialog": "vant-weapp/dialog",
+    "van-field": "vant-weapp/field",
+    "van-cell-group": "vant-weapp/cell-group",
+    "van-notify": "vant-weapp/notify"
+    }
+}

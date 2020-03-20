@@ -1,0 +1,24 @@
+.waybill-con {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  background: #f3f4f5;
+  padding-top: 10px;
+}
+.waybill-con .row-item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  background: #fff;
+  margin: 5px 10px 5px 10px;
+  height: 50px;
+}
+.waybill-con .row-item view {
+  text-indent: 5px;
+  width: 100%;
+  height: 25px;
+  line-height: 25px;
+  font-size: 15px;
+  color: #333;
+}

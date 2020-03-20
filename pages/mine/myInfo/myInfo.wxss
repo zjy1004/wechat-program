@@ -1,0 +1,104 @@
+/* pages/mine/myInfo/myInfo.wxss */
+.my-info {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+.bingTell {
+  display: flex;
+  flex-direction: row;
+  height: 70rpx;
+  justify-content: space-between;
+  align-items: center;
+}
+.bingTell .LTitle {
+  color: #8A9099;
+  font-size: 28rpx;
+  margin-left: 30rpx;
+}
+.bingTell .RTitle {
+  color: #4A7FE8;
+  font-size: 28rpx;
+  margin-right: 30rpx;
+}
+.headPortrait .van-cell{
+  display: flex;
+  align-items: center;
+  height: 120rpx;
+}
+.icon {
+  width: 80rpx;
+  height: 80rpx;
+  margin-top: 10rpx;
+}
+.dialogCss {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  height: 490rpx;
+}
+.content {
+  margin: 60rpx 60rpx;
+  display: flex;
+  flex: 1;
+  position: relative;
+}
+.content text {
+  margin-top: 10rpx;
+}
+.L {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+.R {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+.dialogCss .img {
+  width: 160rpx;
+  height: 160rpx;
+  position: relative;
+}
+
+.change {
+  width: 50rpx;
+  height: 50rpx;
+  position: absolute;
+  left: 170rpx;
+  bottom: 50rpx;
+}
+.dialogBindPhone .van-field__button {
+  padding: 10rpx 10rpx;
+  color: #4A7FE8;
+}
+.dialogBindPhone .van-cell__title {
+  line-height: 40px;
+  height: 40px;
+}
+.dialogBindPhone .van-cell__value {
+  line-height: 40px;
+  height: 40px;
+}
+.dialogBindPhone .van-field__body {
+  height: 100%;
+}
+.dialogBindPhone .van-button--default {
+  border: none;
+  color: #4A7FE8;
+  font-size: 26rpx;
+}
+.getCountDown {
+  font-size: 26rpx;
+}
+
+.van-dialog {
+  top: 40%!important;
+}

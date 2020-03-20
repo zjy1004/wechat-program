@@ -1,0 +1,33 @@
+<!--pages/waybillDetail/waybillDetail.wxml-->
+<view class="waybillDetail">
+  <view class="waybiiInfo" bindtap="goMap">
+    <view class="left"><image src="../../static/img/wlCar.png" class="imgCar"></image></view>
+    <view class="mid">    
+      <view class="mid_c">{{ waybillInfo.status}}</view>
+      <view class="mid_c">{{ waybillInfo.info}}</view>
+    </view>
+    <view class="right"><image class="rightArrow" src="../../static/img/right.png"></image></view>
+  </view>
+  <van-cell-group>
+  <van-cell title="发货方" value="{{waybillDetail.sendClientName}}" />
+  <van-cell title="收货方" value="{{waybillDetail.receivedClientName}}" />
+  <van-cell title="运输状态" value="{{ waybillDetail.waybillStatusName}}" />
+  </van-cell-group>
+  <van-cell-group>
+  <van-cell title="货品名称" value="{{waybillDetail.packageNameFirst}}" />
+  <van-cell title="包裹数量" value="{{waybillDetail.packageTotalQuantity}}" />
+  <van-cell title="货款金额" value="￥{{waybillDetail.receivableGoods}}" />
+  <van-cell title="运费金额" value="￥{{waybillDetail.freight}}" />
+  <van-cell title="运费付款方" value="{{waybillDetail.freightPayer}}" />
+  </van-cell-group>
+  <van-cell-group>
+  <van-cell title="物流公司" value="{{waybillDetail.logisticsName}}" />
+  <van-cell class="waybillNumCss" title="运单号" value="{{waybillDetail.waybillNumber}}" />
+  <van-cell title="配送司机" value="{{waybillDetail.driver}}" />
+  <van-cell title="联系电话" data-id="{{waybillDetail.driverPhone}}" value="{{waybillDetail.driverPhone}}" class="phone" catchtap='tell'/>
+  </van-cell-group>
+  <van-cell-group>
+  <van-cell title="途径线路" value="{{waybillDetail.routerName}}" />
+  </van-cell-group>
+  <van-notify id="custom-selector" />
+</view>

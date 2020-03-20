@@ -1,0 +1,52 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/waybill/waybill",
+    "pages/waybill-track/waybill-track",
+    "pages/mine/mine",
+    "pages/waybillDetail/waybillDetail",
+    "pages/mine/myInfo/myInfo",
+    "pages/mine/downloadApp/downloadApp"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "云驿通",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#fff",
+    "backgroundTextStyle": "light",
+    "enablePullDownRefresh": false,
+    "onReachBottomDistance": 50
+  },
+  "tabBar": {
+    "selectedColor": "#4A7FE8",
+    "color": "#CCCCCC",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "/static/img/index.png",
+        "selectedIconPath": "/static/img/index_active.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "/static/img/mine.png",
+        "selectedIconPath": "/static/img/mine_active.png"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 60000,
+    "downloadFile": 60000,
+    "connectSocket": 60000,
+    "uploadFile": 60000
+  },
+  "debug": true,
+  "sitemapLocation": "sitemap.json",
+  "permission": {
+    "scope.userLocation": {
+      "desc": "允许获取您的地理位置吗？"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+.swiper {
+  height: 260rpx;
+}
+.van-search {
+  padding: 20rpx 0 20rpx 20rpx!important;
+  flex: 1;
+  height: 100%;
+}
+.van-search__content {
+  background:#E6E9EB !important;
+  border-radius: 0!important;
+  height: 76rpx!important;
+}
+.search .van-cell__left-icon-wrap {
+  margin-top: 4rpx!important;
+}
+.value-class {
+  flex: none !important;
+}
+.van-cell {
+  color: #24282E!important;
+  font-size: 30rpx!important;
+}

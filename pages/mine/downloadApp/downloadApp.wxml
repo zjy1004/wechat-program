@@ -1,0 +1,8 @@
+<!--pages/mine/downloadApp/downloadApp.wxml-->
+<view class="downloadApp">
+  <view class="qr">
+    <image class="images" src="../../../static/img/qr.jpg"></image>
+  </view>
+  <text class="version">版本号：V1.2</text>
+  <text class="word">为物流客户准备的一款APP，主要包含代收货款在线提现，运单信息查询等功能，意在为客户提供一站式高效服务。</text>
+</view>

@@ -1,0 +1,9 @@
+<!--pages/waybill/waybill.wxml-->
+<view class="waybill-con">
+  <view class="row-item" wx:for="{{listData}}" wx:for-item="waybillItem">
+    <view>收货方名称： {{waybillItem.childrenWaybill[0].receiveClientName}}           </view>
+    <view>线路名称： {{waybillItem.childrenWaybill[0].lineName}}</view>
+    <view>
+    </view>
+  </view>
+</view>
